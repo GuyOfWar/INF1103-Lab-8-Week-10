@@ -1,0 +1,26 @@
+#Python Cache files
+__pycache__/
+*.py[cod]
+
+#Virtual Environments
+.venv/
+venv/
+
+#Local Environment variables
+.env
+
+#IDE Settings
+.vscode/
+.idea/
+
+#JSON files
+*.json
+
+#misecellanous files
+*.txt
+*.png
+*.jpg
+*.jpeg
+
+#Ignore Specific files
+test.py
