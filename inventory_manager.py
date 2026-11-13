@@ -134,7 +134,7 @@ def supplier_option():
 def update_stock(): #option 3
     print("\nUpdate Stock")
     while True: #check if product id is in inventory_list
-        ProductID= input("Enter Product ID:").capitalize()
+        ProductID= input("Enter Product ID: ").capitalize()
         IDcheck= inventory.find_product(ProductID) #gets specific id from Inventory to use
         if IDcheck is not None: 
             print("\nProduct Found:")
@@ -145,7 +145,7 @@ def update_stock(): #option 3
             print("Product ID not found. Try again.")
     while True:
             try: #converts input to int without crashing if it fails by jumping to except block
-                stock= int(input("\nNew Stock Quantity:"))
+                stock= int(input("\nNew Stock Quantity: "))
                 if stock < 0:
                     print("Stock cannot be negative. Please try again.")
                     continue
