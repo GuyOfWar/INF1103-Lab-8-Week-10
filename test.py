@@ -19,7 +19,7 @@ product2 = DigitalProduct("P002", "Mouse", 25.50, 40, 0.50, 1, supplier2)
 
 def show_product_details(product: Product) -> None:
     product.display_information()
-    print(product.get_fulfilment_info())
+    product.get_fulfilment_info()
 
 print("Association & Aggregation Test")
 del supplier1
@@ -44,9 +44,12 @@ product1.display_information()
 product2.display_information()
 product1.get_fulfilment_info()
 product2.get_fulfilment_info()
+print("End Association & Aggregation Test\n")
+
 if isinstance(product1, CanBeShipped):
     product1.calculate_shipping_cost()
-print("Composition Test")
+
+print("\nComposition Test")
 order1.add_order_line(product1, 2)
 order1.add_order_line(product2, 3)
 print("Order 1")
@@ -57,10 +60,14 @@ order2.display_order()
 order1.remove_order_line(0)
 print("Order 1")
 order1.display_order()
+print("End Composition Test\n")
+
 #Lab 8 Part 6.2
 print("Part 6.2 Test substitutability")
 show_product_details(product1)
 show_product_details(product2)
+print("End Test substitutability\n")
+
 #Lab 8 part 7.2
 inventory_C.add_product(product1)
 inventory_C.add_product(product2)
