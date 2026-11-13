@@ -7,15 +7,22 @@ from Inventory import Inventory
 from Supplier import Supplier
 from Order import Order
 from CanBeShipped import CanBeShipped
-supplier = Supplier(101, "ABC Supplies", "abc@example.com")
+supplier1 = Supplier(101, "ABC Supplies", "abc@gmail.com")
+supplier2 = Supplier(102, "DEF Supplies", "def@hotmail.com")
 inventory_A = Inventory()
 inventory_B = Inventory()
 order1 = Order("0001")
 order2 = Order("0002")
-product1 = PhysicalProduct("P001", "Laptop", 1200.00, 15, 37.00, 1, supplier)
-product2 = DigitalProduct("P002", "Mouse", 25.50, 40, 0.50, 1, supplier)
+product1 = PhysicalProduct("P001", "Laptop", 1200.00, 15, 37.00, 1, supplier1)
+product2 = DigitalProduct("P002", "Mouse", 25.50, 40, 0.50, 1, supplier2)
+
+def show_product_details(product: Product) -> None:
+    product.display_information()
+    print(product.get_fulfilment_info())
+
 print("Association & Aggregation Test")
-del supplier
+del supplier1
+del supplier2
 inventory_A.add_product(product1)
 inventory_A.add_product(product2)
 print("Inventory A")
@@ -49,3 +56,7 @@ order2.display_order()
 order1.remove_order_line(0)
 print("Order 1")
 order1.display_order()
+#Lab 8 Part 6.2
+print("Part 6.2 Test substitutability")
+show_product_details(product1)
+show_product_details(product2)

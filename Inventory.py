@@ -39,6 +39,7 @@ class Inventory:
         print("-------------------------------------")
         for product in self.__inventory_list: #loop and print
             product.display_information()
+            product.get_fulfilment_info()
         print("-------------------------------------")
 
     def add_product(self, product: Product) -> None: #option 2
@@ -52,7 +53,6 @@ class Inventory:
         else:
             return(False)
     
-
     def search_product(self) -> Product | None: #option 4
         print("\nSearch Product")
         ProductID= input("Enter Product ID:").capitalize()
@@ -75,6 +75,6 @@ class Inventory:
                 return(product) #stops entire function, using break will only exit the if loop
         print("\nProduct not found.")
         return(None) #stops entire function and indicates no results
-
+    
     def to_list(self) -> list: #converts all Product dictionaries to list of dictionaries for json
         return [product.to_dict() for product in self.__inventory_list]

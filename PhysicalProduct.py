@@ -24,7 +24,7 @@ class PhysicalProduct(Product):
             "product type": self.__type
         }
 
-    def get_fulfilment_info(self) -> str:
+    def get_fulfilment_info(self) -> None:
         print("This product requires physical shipping.")
 
     def calculate_shipping_cost(self) -> None:
