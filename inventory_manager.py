@@ -4,12 +4,15 @@ from Product import Product
 from Inventory import Inventory
 from DigitalProduct import DigitalProduct
 from PhysicalProduct import PhysicalProduct
+from Supplier import Supplier
 prompt = int(0)
 inventory = Inventory() #creating inventory object from Inventory class
-product1 = PhysicalProduct("P001", "Laptop", 1200.00, 15, 3.00, 1) #creating product from Product class via init
-product2 = PhysicalProduct("P002", "Mouse", 25.50, 40, 0.18, 1)
-product3 = DigitalProduct("P003", "Photo", 45.00, 40, 0.50, 2)
-product4 = DigitalProduct("P004", "Video", 299.99, 10, 3.80, 2)
+supplier1 = Supplier(101, "ABC Supplies", "abc@gmail.com")
+supplier2 = Supplier(102, "DEF Supplies", "def@hotmail.com")
+product1 = PhysicalProduct("P001", "Laptop", 1200.00, 15, 3.00, 1, supplier1) #creating product from Product class via init
+product2 = PhysicalProduct("P002", "Mouse", 25.50, 40, 0.18, 1, supplier1)
+product3 = DigitalProduct("P003", "Photo", 45.00, 40, 0.50, 2, supplier2)
+product4 = DigitalProduct("P004", "Video", 299.99, 10, 3.80, 2, supplier2)
 newproduct = ()
 def title_display(): #print out title
     print("========================================")
@@ -83,26 +86,28 @@ def add_product(): #option 2
             if Ptype == 1:
                 while True: #Physical Product check
                     try:
-                        Pweight = float(input("Please enter weight of product:"))
+                        Pweight = float(input("Please enter weight of product: "))
                         if Pweight < 0:
                             print("Weight cannot be negative. Please try again.")
                             continue
                         break # Exit loop if input is valid
                     except ValueError: #when input is not numbers
                         print("Invalid input! Please enter a valid number.")
-                new_product= PhysicalProduct(Pid, Pname, Price, Quantity, Pweight, Ptype) #creates new Physical Product
+                Psupplier = supplier_option()
+                new_product= PhysicalProduct(Pid, Pname, Price, Quantity, Pweight, Ptype, Psupplier) #creates new Physical Product
                 break
             elif Ptype == 2:
                 while True: #Digital Product check
                     try:
-                        Psize = float(input("Please enter download size of product:"))
+                        Psize = float(input("Please enter download size of product: "))
                         if Psize < 0:
                             print("Download size cannot be negative. Please try again.")
                             continue
                         break # Exit loop if input is valid
                     except ValueError: #when input is not numbers
                         print("Invalid input! Please enter a valid number.")
-                new_product= DigitalProduct(Pid, Pname, Price, Quantity, Psize, Ptype) #creates new Digital Product
+                Psupplier = supplier_option()
+                new_product= DigitalProduct(Pid, Pname, Price, Quantity, Psize, Ptype, Psupplier) #creates new Digital Product
                 break
             else:
                 print("Invalid input! Please enter either 1 or 2.")
@@ -111,6 +116,20 @@ def add_product(): #option 2
     print("\nProduct added successfully!\n")
     inventory.add_product(new_product) #add new Product into Inventory
 
+def supplier_option():
+    while True:
+        try:
+            Psupplier = int(input("Choose supplier 1 or 2): "))
+            if Psupplier == 1:
+                return(supplier1)
+            elif Psupplier == 2:
+                return(supplier2)
+            else:
+                print("Invalid input! Please enter either 1 or 2.")
+            break
+        except ValueError:
+            print("Invalid input! Please enter a valid number.")
+        
 def update_stock(): #option 3
     print("\nUpdate Stock")
     while True: #check if product id is in inventory_list

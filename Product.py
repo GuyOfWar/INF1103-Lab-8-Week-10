@@ -20,20 +20,26 @@ class Product(ABC):
     def stock(self) -> int:
         return(self.__stock)
 
+    def supplier(self) -> Supplier:
+        return(self.__supplier)
+
+    def display_supplier_information(self) -> None:
+        self.__supplier.display_supplier_information()
+
     def update_stock(self, stock: int) -> int: #update stock quantity
         self.__stock = int(stock)
         return(self.__stock)
     
     def display_information(self) -> None: #option 1, end keeps the print on the same line
-        print(f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock: {self.__stock}")
-        self.__supplier.display_information()
+        print(f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock: {self.__stock}", end ="")
 
     def to_dict(self) -> dict: #convert Product to dictionary for json
         return {
             "product_id": self.__product_id,
             "name": self.__name,
             "price": self.__price,
-            "stock": self.__stock
+            "stock": self.__stock,
+            "supplier": self.__supplier
         }
 
     @abstractmethod

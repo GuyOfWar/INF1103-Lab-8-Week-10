@@ -6,7 +6,7 @@ class DigitalProduct(Product):
         self.__download_size = float(size)
         self.__type = int(type)
         
-    def download_size(self) -> None:
+    def download_size(self) -> float:
         return(self.__download_size)
 
     def display_information(self) -> None: #option 1 + download size
@@ -20,7 +20,12 @@ class DigitalProduct(Product):
             "price": self.price(),
             "stock": self.stock(),
             "download size": self.__download_size,
-            "product type": self.__type
+            "product type": self.__type,
+            "supplier": {
+            "supplier_id": self.supplier().supplier_id(),
+            "name": self.supplier().name(),
+            "contact_email": self.supplier().contact_email()
+            }
         }
 
     def get_fulfilment_info(self) -> None:

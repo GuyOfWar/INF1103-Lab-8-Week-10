@@ -21,7 +21,12 @@ class PhysicalProduct(Product):
             "price": self.price(),
             "stock": self.stock(),
             "weight": self.__weight,
-            "product type": self.__type
+            "product type": self.__type,
+            "supplier": {
+            "supplier_id": self.supplier().supplier_id(),
+            "name": self.supplier().name(),
+            "contact_email": self.supplier().contact_email()
+            }
         }
 
     def get_fulfilment_info(self) -> None:
