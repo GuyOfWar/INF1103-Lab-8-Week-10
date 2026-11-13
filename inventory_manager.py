@@ -162,7 +162,7 @@ title_display()
 load_inventory()
 menu_display()
 while True: 
-    prompt= input("\nEnter Option:")
+    prompt= input("\nEnter Option: ")
     if prompt== "1":
        inventory.display_all()
     elif prompt== "2":
