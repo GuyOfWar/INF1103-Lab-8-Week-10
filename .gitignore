@@ -23,4 +23,3 @@ venv/
 *.jpeg
 
 #Ignore Specific files
-test.py

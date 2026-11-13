@@ -3,7 +3,7 @@ from DigitalProduct import DigitalProduct
 from PhysicalProduct import PhysicalProduct
 class Inventory:
     def __init__(self):
-         self.__inventory_list = []
+         self.__inventory_list: list[Product] = []
 
     def load_list(self, data): #converts data from json into Product in Inventory
         self.__inventory_list = []
@@ -28,7 +28,7 @@ class Inventory:
                 )
             self.__inventory_list.append(product)
     
-    def product_id_check(self, product_id):
+    def find_product(self, product_id: str): #formerly product_id_check
         for product in self.__inventory_list:
             if product.product_id() == product_id: #check if id matches the id in inventory list
                 return(product)
@@ -41,8 +41,17 @@ class Inventory:
             product.display_information()
         print("-------------------------------------")
 
-    def add_product(self, product): #option 2
+    def add_product(self, product: Product): #option 2
         self.__inventory_list.append(product)
+
+    def remove_product(self, product_id: str):
+        product = self.find_product(product_id)
+        if product is not None:
+            self.__inventory_list.remove(product)
+            return(True)
+        else:
+            return(False)
+    
 
     def search_product(self): #option 4
         print("\nSearch Product")
