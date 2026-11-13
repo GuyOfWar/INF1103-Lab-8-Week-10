@@ -119,16 +119,17 @@ def add_product(): #option 2
 def supplier_option():
     while True:
         try:
-            Psupplier = int(input("Choose supplier 1 or 2): "))
+            Psupplier = int(input("Choose supplier 1 or 2: "))
             if Psupplier == 1:
                 return(supplier1)
             elif Psupplier == 2:
                 return(supplier2)
+            elif Psupplier < 0:
+                print("Invalid input! Please enter either 1 or 2.")  
             else:
                 print("Invalid input! Please enter either 1 or 2.")
-            break
         except ValueError:
-            print("Invalid input! Please enter a valid number.")
+            print("Invalid input! Please enter either 1 or 2.")
         
 def update_stock(): #option 3
     print("\nUpdate Stock")
